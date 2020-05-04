@@ -1,0 +1,6 @@
+// needed for vue class component decorator
+{
+  "compilerOptions": {
+      "experimentalDecorators": true
+  }
+}
