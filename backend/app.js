@@ -5,24 +5,59 @@ const { cypher, close } = require('./services/neo4j')
 
 // neo models
 const Article = require('./models/Article')
+const User = require('./models/User')
 
 const testNeo = async () => {
 
-  let newArticle = new Article({
-    title: 'New Article',
-    content: 'lorem ipsum stuff',
-    timestamp: Date.now() + ""
+  // let newArticle = new Article({
+  //   title: 'New Article',
+  //   content: 'lorem ipsum stuff',
+  //   timestamp: Date.now() + ""
+  // })
+
+  // await newArticle.save()
+
+  // console.log('saved article', newArticle)
+
+
+  // let user = new User({
+  //   name: 'Loke',
+  //   from: 'Sweden',
+  //   articles: [
+  //     newArticle
+  //   ]
+  // })
+
+  let loke = await User.findOne({
+    id: '1d09ef49-f985-4fba-b529-a205a0370d20'
   })
 
-  await newArticle.save()
+  // loke.from = 'England'
+  // await loke.save()
 
-  console.log('saved article', newArticle)
+  await loke.populate(['articles'])
 
-  let articles = await Article.find()
-  console.log('found articles:', articles)
+  // loke.articles = loke.articles.map(a => new Article(a))
+
+  // loke.articles[0] = new Article(loke.articles[0])
+  // await loke.detach(loke.articles[0])
+
+  console.log(loke);
+
+  await loke.delete()
+
+  // await User.delete({
+  //   name: 'Loke'
+  // })
+
+  // await user.save()
+
+
+  // let articles = await Article.find()
+  // console.log('found articles:', articles)
 }
 
-testNeo()
+// testNeo()
 
 // rest route to get all articles
 app.get('/rest/articles', async (req, res) => {

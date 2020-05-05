@@ -5,28 +5,19 @@
       <router-link to="/about">About</router-link>
     </div>
     <router-view/>
+    <button class="btn">Click me</button>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  mounted() {
+    this.$M.AutoInit()
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    console.log(this.$M)
   }
 }
+</script>
+
+<style lang="scss" src="./globalStyles.scss">
 </style>
