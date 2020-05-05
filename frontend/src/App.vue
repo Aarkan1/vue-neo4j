@@ -12,7 +12,7 @@
 <script>
 export default {
   mounted() {
-    this.$M.AutoInit()
+    this.$M.AutoInit() 
 
     console.log(this.$M)
   }
